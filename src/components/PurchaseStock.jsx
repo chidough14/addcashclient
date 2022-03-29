@@ -18,8 +18,6 @@ const PurchaseStock = () => {
         })
         .then(response => response.json()) 
         .then(json => {
-
-            console.log(json)
             setClients(json)
         
 
@@ -35,8 +33,6 @@ const PurchaseStock = () => {
         })
         .then(response => response.json()) 
         .then(json => {
-
-            console.log(json)
             setStocks(json)
         
 
@@ -49,7 +45,6 @@ const PurchaseStock = () => {
     }, [])
 
     const addPurchase = async () => {
-        console.log(clientValue, stockValue, volume);
 
         await fetch("https://whispering-dusk-53744.herokuapp.com/api/purchase", {
             method: "POST",
@@ -58,7 +53,6 @@ const PurchaseStock = () => {
         })
         .then(response => response.json()) 
         .then(json => {
-            console.log(json)
             message.success('Purchase successful')
             setClientValue()
             setStockValue()
@@ -70,6 +64,7 @@ const PurchaseStock = () => {
 
   return (
     <div style={{width: "400px", margin: "auto",  marginTop: "20px"}}>
+        <h2>Purchase a stock</h2>
         <Select placeholder="Select client" value={clientValue} style={{ width: 400, marginBottom: "20px" }} onChange={(e)=>setClientValue(e)}>
             {
                 clients.map((client) => (

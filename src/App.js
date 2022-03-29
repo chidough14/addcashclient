@@ -5,30 +5,35 @@ import 'antd/dist/antd.css';
 import Stock from './components/Stock';
 import Client from './components/Client';
 import PurchaseStock from './components/PurchaseStock';
+import { useState } from 'react';
 
 const { Header, Content, Footer } = Layout;
 
 
+
 function App() {
+  const [currentTab, setCurrentTab] = useState("home")
+
   return (
     <div className="App">
       <Layout className="layout">
         <Header>
           <div className="logo" />
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-            <Menu.Item >Stocks</Menu.Item>
-            <Menu.Item >Clients</Menu.Item>
+            <Menu.Item onClick={()=> setCurrentTab("stocks")} >Stocks</Menu.Item>
+            <Menu.Item onClick={()=> setCurrentTab("clients")}>Clients</Menu.Item>
+            <Menu.Item onClick={()=> setCurrentTab("purchases")}>Purchase stock</Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px' }}>
           <div className="site-layout-content">
-            {/* <h2>Welcome to Addcash Stock App</h2> */}
-            {/* <Stock /> */}
-            {/* <Client /> */}
-            <PurchaseStock />
+            { currentTab === "home" && <h1>Welcome to Addcash Stock App</h1>}
+            {currentTab === "stocks" && <Stock />}
+            { currentTab === "clients" && <Client />}
+            {currentTab === "purchases" && <PurchaseStock />}
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        {/* <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer> */}
       </Layout>
     </div>
   );
