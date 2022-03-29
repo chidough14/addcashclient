@@ -77,14 +77,6 @@ const Stock = () => {
         })
 
         setReload(r => !r)
-        // .then(response => response.json()) 
-        // .then(json => {
-
-        //     setReload(r => !r)
-        
-
-        // })
-        // .catch(err => console.log(err));
     }
 
     const addStock = () => {
@@ -92,7 +84,7 @@ const Stock = () => {
     }
 
     const handleOk = async () => {
-        setVisible(false);
+        
 
         await fetch("https://whispering-dusk-53744.herokuapp.com/api/stock", {
             method: "POST",
@@ -104,6 +96,7 @@ const Stock = () => {
             setCompanyName("")
             setUnitPrice("")
             setReload(r => !r)
+            setVisible(false);
          
         })
         .catch(err => console.log(err));
@@ -142,9 +135,17 @@ const Stock = () => {
             <Button type="primary" onClick={addStock} style={{marginBottom: "10px"}}>Add Stock</Button>
             <Table columns={columns} dataSource={data} />
 
-            <Modal title="Add Stock" visible={visible} onOk={handleOk} onCancel={handleCancel}>
-                <Input placeholder="Company name" value={companyName} style={{marginBottom: "10px"}} onChange={(e)=> setCompanyName(e.target.value)}/>
-                <Input placeholder="Unit Price" value={unitPrice} onChange={(e)=> setUnitPrice(e.target.value)} />
+            <Modal title="Add Stock" visible={visible} onOk={handleOk} onCancel={handleCancel} okButtonProps={{ disabled: companyName === "" || unitPrice === "" }}>
+                <Input 
+                   placeholder="Company name" 
+                   value={companyName} style={{marginBottom: "10px"}} 
+                   onChange={(e)=> setCompanyName(e.target.value)}  
+                />
+                <Input 
+                   placeholder="Unit Price" 
+                   value={unitPrice} 
+                   onChange={(e)=> setUnitPrice(e.target.value)} 
+                />
             </Modal>
 
             <Modal title="Edit Stock" visible={editVisible} onOk={handleEdit} onCancel={handleEditCancel}>

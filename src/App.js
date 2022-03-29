@@ -3,6 +3,7 @@ import './App.css';
 import { Layout, Menu } from 'antd';
 import 'antd/dist/antd.css';
 import Stock from './components/Stock';
+import Client from './components/Client';
 
 const { Header, Content, Footer } = Layout;
 
@@ -21,7 +22,8 @@ function App() {
         <Content style={{ padding: '0 50px' }}>
           <div className="site-layout-content">
             {/* <h2>Welcome to Addcash Stock App</h2> */}
-            <Stock />
+            {/* <Stock /> */}
+            <Client />
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
