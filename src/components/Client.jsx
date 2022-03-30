@@ -92,6 +92,8 @@ const Client = () => {
         setModalClient(record)
         setStockData([])
         setSpinner(true)
+        setTotal(0)
+        setTotalInvestment(0)
 
         await fetch(`https://whispering-dusk-53744.herokuapp.com/api/purchases/${record.id}`, {
             method: "GET",
