@@ -33,7 +33,7 @@ function App() {
               
               <div>
                 <h1 style={{fontSize: "28px"}}>Welcome to Adcash Stock App</h1>
-                <img src={logo} alt='logo'/>
+                <img src={logo} style={{width: "900px", height: "500px"}} alt='logo'/>
               </div>
             )}
 
