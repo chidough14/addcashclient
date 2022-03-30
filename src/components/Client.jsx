@@ -172,7 +172,12 @@ const Client = () => {
         <div style={{ width: "1000px", margin: "auto"}}>
             <h2>Clients</h2>
             <Button type="primary" onClick={addClient} style={{marginBottom: "10px"}}>Add Client</Button>
-            <Table columns={columns} dataSource={data} loading={{ indicator: <div><Spin size='large' /></div>, spinning: pageSpinner}} />
+            <Table 
+              columns={columns} 
+              dataSource={data} 
+              loading={{ indicator: <div><Spin size='large' /></div>, spinning: pageSpinner}}
+              pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '20', '30']}}
+            />
 
             <Modal title="Add Client" visible={visible} onOk={handleOk} onCancel={handleCancel} okButtonProps={{ disabled: clientName === ""  }} okText="Save">
                 <Input 
@@ -192,7 +197,11 @@ const Client = () => {
                cancelButtonProps={{hidden: true}} 
                closable={false}
             >
-                <Table columns={stockColumns} dataSource={stockData} loading={{ indicator: <div><Spin /></div>, spinning: spinner}} pagination={false} />
+                <Table 
+                  columns={stockColumns} 
+                  dataSource={stockData} loading={{ indicator: <div><Spin /></div>, spinning: spinner}} 
+                  pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '20', '30']}}
+                />
 
 
 

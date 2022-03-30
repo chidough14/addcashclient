@@ -145,7 +145,12 @@ const Stock = () => {
         <div style={{ width: "1000px", margin: "auto"}}>
             <h2>Stocks</h2>
             <Button type="primary" onClick={addStock} style={{marginBottom: "10px"}}>Add Stock</Button>
-            <Table columns={columns} dataSource={data} loading={{ indicator: <div><Spin size='large' /></div>, spinning: pageSpinner}}  />
+            <Table 
+               columns={columns} 
+               dataSource={data} 
+               loading={{ indicator: <div><Spin size='large' /></div>, spinning: pageSpinner}}
+               pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '20', '30']}}
+            />
 
             <Modal 
                title="Add Stock" 
